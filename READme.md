@@ -16,6 +16,7 @@ The player can move from left to right on the screen with the keyboard. They hav
 4. game.js
 5. player.js
 6. enemy.js
+7. goods.js
 
 ##### 1. Index.html
 
