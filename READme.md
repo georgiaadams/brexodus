@@ -33,20 +33,96 @@ The player can move from left to right on the screen with the keyboard. They hav
 ##### 4. Game class
 
 ```javascript
-class Game {}
+class Game {
+  canvas;
+  ctx;
+  player;
+  enemies;
+  goods;
+  gameOver;
+  gameWon;
+  loopCount;
+}
 ```
+
+###### Methods
+
+- start
+- startLoop
+- checkCollision enemy
+- checkCollision goods
+- gameOver/gameWon
+- printPoints
+- printBorderControl (lives)
 
 ##### 5. Player class
 
 ```js
-class Player {}
+class Player {
+    canvas
+    ctx
+    x.position
+    y.position
+    width
+    height
+    direction
+    lives
+    points
+    image
+}
 ```
+
+###### Methods
+
+- draw
+- move
+- collidedWithScreen
+- collidedWithEnemy
+- collidedWithGoods
+- addPoints
+- addBorderControl
 
 ##### 6. Enemy class
 
 ```js
-class Enemy {}
+class Enemy {
+    canvas
+    ctx
+    x.position
+    y.position
+	width
+	height
+    speed
+    direction
+    image
+}
 ```
+
+###### Methods
+
+- draw
+- move
+
+##### 7. Goods class
+
+```js
+class Goods {
+    canvas
+    ctx
+    x.position
+    y.position
+    width
+    height
+    speed
+    direction
+    image
+}
+```
+
+###### Methods
+
+- draw
+- move
 
 ### States and States Transitions
 
@@ -73,23 +149,24 @@ class Enemy {}
 
 ### Tasks
 
-- Initialise git and gitHub
+- Setup git and gitHub
 - Create and connect src files: main.js, game.js, player.js, enemy.js
 - BuildDOM in the main.js
 - Outline 4 screen states in the main.js & set game state
 - Create the screen transitions in the main.js
 - Create Game class & add methods
+- Create game loop in game.js
 - Create player class in player.js
 - Move player in game.js
 - Create enemy class in enemy.js
+- Handle collisions between player & one enemy in game.js
 - Move enemy in game.js
-- Create game loop in game.js
-- Handle collisions between player & enemy in game.js
+- Multiple enemies
 - Create goods class - goods.js
-- Move goods in game.js
 - Handle collision between player & goods
+- Move goods (enemy logic) in game.js
 - Increment points in _scoreboard_ if "goods" collected
-- Deduct "lives" from _border control_
+- Add hits to _border control_
 - Add images, audio, CSS etc.
 
 ### Backlog
@@ -97,3 +174,14 @@ class Enemy {}
 - Time limit (give the player 45 seconds to get 100points)
 - Points deduction -- add new enemy (Boris Johnson) - player points are deducted by 10 if you hit him
 - Player shooting ability - able to take out politicians
+- Sprites
+
+### Links
+
+#### Trello
+
+https://trello.com/b/DtkBVwwc/brexodus
+
+#### Git
+
+https://github.com/georgiaadams/brexodus
