@@ -16,6 +16,7 @@ The player can move from left to right on the screen with the keyboard. They hav
 4. game.js
 5. player.js
 6. enemy.js
+7. goods.js
 
 ##### 1. Index.html
 
@@ -46,6 +47,11 @@ class Player {}
 
 ```js
 class Enemy {}
+```
+
+#### 7. Goods class 
+```js
+class Goods {}
 ```
 
 ### States and States Transitions
@@ -83,10 +89,10 @@ class Enemy {}
 - Move player in game.js
 - Create enemy class in enemy.js
 - Move enemy in game.js
-- Create game loop in game.js
-- Handle collisions between player & enemy in game.js
 - Create goods class - goods.js
 - Move goods in game.js
+- Create game loop in game.js
+- Handle collisions between player & enemy in game.js
 - Handle collision between player & goods
 - Increment points in _scoreboard_ if "goods" collected
 - Deduct "lives" from _border control_
