@@ -41,7 +41,8 @@ class Game {
   enemies;
   goods;
   gameOver;
-  gameWon;
+  gameScreen;
+  points;
   loopCount;
 }
 ```
