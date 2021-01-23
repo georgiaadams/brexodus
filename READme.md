@@ -65,12 +65,11 @@ class Player {
     ctx
     x.position
     y.position
-    width
-    height
+    size
     direction
     lives
-    points
     image
+    speed
 }
 ```
 
@@ -92,8 +91,7 @@ class Enemy {
     ctx
     x.position
     y.position
-	width
-	height
+	  size
     speed
     direction
     image
@@ -113,8 +111,7 @@ class Goods {
     ctx
     x.position
     y.position
-    width
-    height
+    size
     speed
     direction
     image
@@ -135,8 +132,8 @@ class Goods {
 
 - gameScreen
 
-  - game is running whilst lives (border control) < 3
-  - goes to gameOverScreen if lives are === 3
+  - game is running whilst lives (border control) > 0
+  - goes to gameOverScreen if lives are === 0
   - goes to winScreen if points are === 100
 
 - gameOverScreen

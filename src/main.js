@@ -53,9 +53,9 @@ function createGameScreen() {
         </div>
       </header>
 
-      <div class="canvas">
-      <canvas ></canvas>
-      </div>
+
+      <canvas></canvas>
+    
       
     </main>    
     `);
@@ -121,6 +121,8 @@ function startGame() {
 
   game = new Game();
   game.gameScreen = gameScreen;
+
+  game.start();
 }
 
 function endGame() {

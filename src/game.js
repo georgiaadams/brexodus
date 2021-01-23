@@ -14,22 +14,41 @@ class Game {
 
   start() {
     //Create ctx, player and start loop
-    this.gameCanvas = document.querySelector(".canvas");
     this.canvas = this.gameScreen.querySelector("canvas");
-    this.ctx = canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d");
 
     this.points = this.gameScreen.querySelector(".points .value");
     this.borderControl = this.gameScreen.querySelector(".lives .value");
 
-    this.containerHeight = this.gameCanvas.offsetHeight;
-    this.containerWidth = this.gameCanvas.offsetWidth;
-    this.canvas.setAttribute("Height", this.containerHeight);
-    this.canvas.setAttribute("Width", this.containerWidth);
+    this.player = new Player(this.canvas, 3);
 
-    this.player = new Player(this.canvas, "something to go here");
+    // function handleKeyLeft(event) {
+    //   if (event.key === "ArrowLeft") {
+    //     this.player.setDirection("left");
+    //   } else if (event.key === "ArrowRight") {
+    //     this.player.setDirection("right");
+    //   }
+    // }
+
+    // const boundHandleKeyLeft = handleKeyLeft.bind(this);
+    // document.body.addEventListener("keyleft", boundHandleKeyLeft);
+
+    this.startLoop();
   }
 
-  startLoop() {}
+  startLoop() {
+    const loop = function () {
+      console.log("looping");
+
+      this.player.draw();
+    }.bind(this);
+
+    // if (!this.gameOver) {
+    //   window.requestAnimationFrame(loop);
+    // }
+
+    window.requestAnimationFrame(loop);
+  }
 
   handleCollisionsEnemy() {}
 
