@@ -53,8 +53,9 @@ function createGameScreen() {
         </div>
       </header>
 
-
-      <canvas></canvas>
+    <div class="canvas-container">
+      <canvas width="1240" height="660"></canvas>
+      </div>
     
       
     </main>    
@@ -71,7 +72,7 @@ function removeGameScreen() {
 function createGameOverScreen() {
   gameOverScreen = buildDom(`
      <main>
-     <h1>You've been DEPORTED</h1>
+     <h2>You've been DEPORTED</h2>
      <img class="lose-img" src="" alt="" />
     <p>Put losers text here</p>
     <button>Try Again</button>
@@ -93,7 +94,7 @@ function removeGameOverScreen() {
 function createWinScreen() {
   winScreen = buildDom(`
      <main>
-     <h1>Congrats! You made it into the EU</h1>
+     <h2>Congrats! You made it into the EU</h2>
      <img class="win-img" src="" alt="" />
     <p>Put winners text here</p>
     <button>Restart</button>

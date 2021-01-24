@@ -4,21 +4,35 @@ class Enemy {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = canvas.height;
-    this.size = 15;
+    this.size = 140;
     this.speed = speed;
-    this.image = "";
   }
 
   draw() {
-    this.ctx.fillStyle = "#4C96B4";
-    this.ctx.fillRect(this.x, this.y, this.size, this.size);
+    this.ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
   }
 
   update() {
-    this.y--;
+    this.y -= this.speed;
   }
 
   isInsideScreen() {
     return this.y + this.size / 2 > 0;
+  }
+}
+
+class Macron extends Enemy {
+  constructor(canvas, x, speed) {
+    super(canvas, x, speed);
+    this.image = new Image();
+    this.image.src = "../img/macron-enemy.png";
+  }
+}
+
+class Merkel extends Enemy {
+  constructor(canvas, x, speed) {
+    super(canvas, x, speed);
+    this.image = new Image();
+    this.image.src = "../img/merkel-enemy.png";
   }
 }

@@ -1,5 +1,90 @@
+/* CSS RESET */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*layout / components */
+
+.canvas-container {
+  justify-content: center;
+  height: 100vh;
+  padding: 70px;
+  background-image: linear-gradient(to bottom right, #3e2b61, #8a78a9);
+}
+
 canvas {
+  background-color: white;
   border: black solid 2px;
-  width: 800px;
-  height: 500px;
+}
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 100px;
+  margin: 0 auto;
+  color: antiquewhite;
+  font-family: fantasy;
+  text-align: center;
+}
+
+.start-btn {
+  background-color: antiquewhite;
+  color: black;
+  width: 100px;
+  height: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: fantasy;
+  border: black double 2px;
+}
+
+.splash-screen {
+  background-image: url("https://www.teahub.io/photos/full/37-370639_london-animated-background.png");
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+h3 {
+  font-family: fantasy;
+  font-size: 30px;
+  color: antiquewhite;
+  width: 45%;
+  text-align: center;
+}
+
+header {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-top: 40px;
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.game .lives {
+  flex: 1;
+}
+
+.game.points {
+  flex: 1;
 }

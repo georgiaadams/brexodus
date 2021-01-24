@@ -45,17 +45,22 @@ class Game {
 
   startLoop() {
     const loop = function () {
+      if (Math.random() > 0.99) {
+        let randomX = (this.canvas.width - 50) * Math.random();
+        let newEnemy = new Macron(this.canvas, randomX, 4);
+        this.enemies.push(newEnemy);
+      }
       if (Math.random() > 0.98) {
-        let randomX = (this.canvas.width - 15) * Math.random();
-        let newEnemy = new Enemy(this.canvas, randomX, 2);
+        let randomX = (this.canvas.width - 50) * Math.random();
+        let newEnemy = new Merkel(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
 
       this.handleCollisionEnemy();
 
-      if (Math.random() > 0.99) {
-        let randomGX = (this.canvas.width - 10) * Math.random();
-        let newGood = new Goods(this.canvas, randomGX, 2);
+      if (Math.random() > 0.98) {
+        let randomGX = (this.canvas.width - 50) * Math.random();
+        let newGood = new Goods(this.canvas, randomGX, 6);
         this.goods.push(newGood);
       }
 
@@ -102,14 +107,14 @@ class Game {
   }
 
   handleCollisionEnemy() {
+    if (this.player.lives === 0) {
+      this.gameOver(false);
+    }
     this.enemies = this.enemies.filter((enemy) => {
       const colliding = this.player.didCollide(enemy);
 
       if (colliding) {
         this.player.removeLife();
-      }
-      if (this.player.lives === 0) {
-        this.gameOver(false);
       }
 
       return !colliding;
@@ -117,16 +122,14 @@ class Game {
   }
 
   handleCollisionGoods() {
+    if (this.player.gamePoints === 100) {
+      this.gameOver(true);
+    }
     this.goods = this.goods.filter((good) => {
       const goodsCollide = this.player.didCollide(good);
 
-      console.log(this.player.didCollide(good));
-
       if (goodsCollide) {
         this.player.gamePoints += 10;
-      }
-      if (this.player.gamePoints === 100) {
-        this.gameOver(true);
       }
 
       return !goodsCollide;

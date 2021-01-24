@@ -4,18 +4,18 @@ class Player {
     this.ctx = this.canvas.getContext("2d");
 
     this.x = canvas.width / 2;
-    this.y = 30;
-    this.size = 20;
+    this.y = 40;
+    this.size = 80;
     this.direction = 0;
     this.lives = lives;
-    this.image = "";
-    this.speed = 4;
+    this.image = new Image();
+    this.image.src = "../img/boat-left.png";
+    this.speed = 8;
     this.gamePoints = 0;
   }
 
   draw() {
-    this.ctx.fillStyle = "#C82FED";
-    this.ctx.fillRect(this.x, this.y, this.size, this.size);
+    this.ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
   }
 
   update() {
@@ -26,8 +26,10 @@ class Player {
   setDirection(direction) {
     if (direction === "left") {
       this.direction = -1;
+      this.image.src = "../img/boat-left.png";
     } else if (direction === "right") {
       this.direction = 1;
+      this.image.src = "../img/boat-right.png";
     } else {
       this.direction = 0;
     }

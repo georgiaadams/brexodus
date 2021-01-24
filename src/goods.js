@@ -4,9 +4,9 @@ class Goods {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = canvas.height;
-    this.size = 10;
+    this.size = 50;
     this.speed = speed;
-    this.image = "";
+    this.image = new Image();
   }
   draw() {
     this.ctx.fillStyle = "#F38B1D";
@@ -14,7 +14,7 @@ class Goods {
   }
 
   update() {
-    this.y--;
+    this.y -= this.speed;
   }
 
   isInsideScreen() {
