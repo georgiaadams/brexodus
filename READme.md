@@ -40,10 +40,9 @@ class Game {
   player;
   enemies;
   goods;
-  gameOver;
+  gameIsOver;
   gameScreen;
-  points;
-  loopCount;
+  gamePoints;
 }
 ```
 
@@ -51,11 +50,10 @@ class Game {
 
 - start
 - startLoop
-- checkCollision enemy
-- checkCollision goods
+- handleCollisionEnemy
+- handleCollisionGoods
 - gameOver/gameWon
-- printPoints
-- printBorderControl (lives)
+- gameStats
 
 ##### 5. Player class
 
@@ -76,12 +74,11 @@ class Player {
 ###### Methods
 
 - draw
-- move
-- collidedWithScreen
-- collidedWithEnemy
-- collidedWithGoods
-- addPoints
-- addBorderControl
+- update
+- setDirection
+- handleScreenCollision
+- didCollide
+- removeLives
 
 ##### 6. Enemy class
 
@@ -159,11 +156,11 @@ class Goods {
 - Handle collisions between player & one enemy in game.js
 - Move enemy in game.js
 - Multiple enemies
+- Deduct "lives" from border control
 - Create goods class - goods.js
 - Handle collision between player & goods
 - Move goods (enemy logic) in game.js
 - Increment points in _scoreboard_ if "goods" collected
-- Add hits to _border control_
 - Add images, audio, CSS etc.
 
 ### Backlog

@@ -1,9 +1,9 @@
 class Goods {
-  constructor() {
+  constructor(canvas, x, speed) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = canvas.width + this.size;
-    this.y = y;
+    this.x = x;
+    this.y = canvas.height;
     this.size = 10;
     this.speed = speed;
     this.image = "";
@@ -13,5 +13,11 @@ class Goods {
     this.ctx.fillRect(this.x, this.y, this.size, this.size);
   }
 
-  update() {}
+  update() {
+    this.y--;
+  }
+
+  isInsideScreen() {
+    return this.y + this.size / 2 > 0;
+  }
 }

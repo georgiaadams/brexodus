@@ -119,16 +119,20 @@ function startGame() {
 
   createGameScreen();
 
-  game = new Game();
+  game = new Game(endGame);
   game.gameScreen = gameScreen;
 
   game.start();
 }
 
-function endGame() {
+function endGame(hasWon) {
   removeGameScreen();
-  createGameOverScreen();
-  createWinScreen();
+
+  if (hasWon) {
+    createWinScreen();
+  } else {
+    createGameOverScreen();
+  }
 }
 
 window.addEventListener("load", createSplashScreen);

@@ -1,23 +1,24 @@
 "use strict";
 
 class Game {
-  constructor() {
+  constructor(buildGameOverScreen) {
     this.canvas = null;
     this.ctx = null;
     this.player = null;
     this.enemies = [];
     this.goods = [];
-    this.gameOver = false;
+    this.gameIsOver = false;
     this.gameScreen = null;
-    this.points = 0;
+    this.gamePoints = 0;
+    this.buildGameOverScreen = buildGameOverScreen;
   }
 
   start() {
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
 
-    // this.points = this.gameScreen.querySelector(".points .value");
-    // this.borderControl = this.gameScreen.querySelector(".lives .value");
+    this.points = this.gameScreen.querySelector(".points .value");
+    this.borderControl = this.gameScreen.querySelector(".lives .value");
 
     this.player = new Player(this.canvas, 3);
 
@@ -52,19 +53,26 @@ class Game {
 
       this.handleCollisionEnemy();
 
+      if (Math.random() > 0.99) {
+        let randomGX = (this.canvas.width - 10) * Math.random();
+        let newGood = new Goods(this.canvas, randomGX, 2);
+        this.goods.push(newGood);
+      }
+
+      this.handleCollisionGoods();
+
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       this.drawAll();
 
       this.updateAll();
 
-      window.requestAnimationFrame(loop);
-      // console.log("looping");
-    }.bind(this);
+      this.gameStats();
 
-    // if (!this.gameOver) {
-    //   window.requestAnimationFrame(loop);
-    // }
+      if (!this.gameIsOver) {
+        window.requestAnimationFrame(loop);
+      }
+    }.bind(this);
 
     window.requestAnimationFrame(loop);
   }
@@ -74,13 +82,22 @@ class Game {
     this.enemies.forEach(function (enemy) {
       enemy.draw();
     });
+    this.goods.forEach(function (good) {
+      good.draw();
+    });
   }
 
   updateAll() {
     this.player.update();
+
     this.enemies = this.enemies.filter(function (enemy) {
       enemy.update();
       return enemy.isInsideScreen();
+    });
+
+    this.goods = this.goods.filter(function (good) {
+      good.update();
+      return good.isInsideScreen();
     });
   }
 
@@ -88,15 +105,41 @@ class Game {
     this.enemies = this.enemies.filter((enemy) => {
       const colliding = this.player.didCollide(enemy);
 
+      if (colliding) {
+        this.player.removeLife();
+      }
+      if (this.player.lives === 0) {
+        this.gameOver(false);
+      }
+
       return !colliding;
     });
   }
 
-  handleCollisionGoods() {}
+  handleCollisionGoods() {
+    this.goods = this.goods.filter((good) => {
+      const goodsCollide = this.player.didCollide(good);
 
-  gameOver() {}
+      console.log(this.player.didCollide(good));
 
-  gameWon() {}
+      if (goodsCollide) {
+        this.player.gamePoints += 10;
+      }
+      if (this.player.gamePoints === 100) {
+        this.gameOver(true);
+      }
 
-  gameStats() {}
+      return !goodsCollide;
+    });
+  }
+
+  gameOver(hasWon) {
+    this.gameIsOver = true;
+    this.buildGameOverScreen(hasWon);
+  }
+
+  gameStats() {
+    this.borderControl.innerHTML = this.player.lives;
+    this.points.innerHTML = this.player.gamePoints;
+  }
 }

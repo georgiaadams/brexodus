@@ -10,6 +10,7 @@ class Player {
     this.lives = lives;
     this.image = "";
     this.speed = 4;
+    this.gamePoints = 0;
   }
 
   draw() {
@@ -58,5 +59,9 @@ class Player {
     const collideBottom = this.y + this.size > item.y;
 
     return collideLeft && collideRight && collideTop && collideBottom;
+  }
+
+  removeLife() {
+    this.lives -= 1;
   }
 }
