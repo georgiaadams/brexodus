@@ -20,7 +20,6 @@ class Game {
     // this.borderControl = this.gameScreen.querySelector(".lives .value");
 
     this.player = new Player(this.canvas, 3);
-    this.enemy = new Enemy(this.canvas, 35, 3);
 
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {
@@ -45,6 +44,12 @@ class Game {
 
   startLoop() {
     const loop = function () {
+      if (Math.random() > 0.98) {
+        let randomX = (this.canvas.width - 15) * Math.random();
+        let newEnemy = new Enemy(this.canvas, randomX, 2);
+        this.enemies.push(newEnemy);
+      }
+
       this.handleCollisionEnemy();
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -54,7 +59,7 @@ class Game {
       this.updateAll();
 
       window.requestAnimationFrame(loop);
-      console.log("looping");
+      // console.log("looping");
     }.bind(this);
 
     // if (!this.gameOver) {
@@ -66,16 +71,25 @@ class Game {
 
   drawAll() {
     this.player.draw();
-    this.enemy.draw();
+    this.enemies.forEach(function (enemy) {
+      enemy.draw();
+    });
   }
 
   updateAll() {
     this.player.update();
-    this.enemy.update();
+    this.enemies = this.enemies.filter(function (enemy) {
+      enemy.update();
+      return enemy.isInsideScreen();
+    });
   }
 
   handleCollisionEnemy() {
-    this.player.didCollide(this.enemy);
+    this.enemies = this.enemies.filter((enemy) => {
+      const colliding = this.player.didCollide(enemy);
+
+      return !colliding;
+    });
   }
 
   handleCollisionGoods() {}

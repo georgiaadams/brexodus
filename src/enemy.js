@@ -2,7 +2,7 @@ class Enemy {
   constructor(canvas, x, speed) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.x = canvas.width / 2;
+    this.x = x;
     this.y = canvas.height;
     this.size = 15;
     this.speed = speed;

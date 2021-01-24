@@ -49,21 +49,14 @@ class Player {
   }
 
   didCollide(item) {
-    const playerLeft = this.x;
-    const playerRight = this.x + this.size;
-    const playerTop = this.y;
-    const playerBottom = this.y + this.size;
+    const collideLeft = this.x < item.x + item.size;
 
-    const itemLeft = item.x;
-    const itemRight = item.x + item.size;
-    const itemTop = item.y;
-    const itemBottom = item.y + item.size;
+    const collideRight = this.x + this.size > item.x;
 
-    const hitLeft = itemLeft <= playerRight && itemLeft >= playerLeft;
-    const hitRight = itemRight <= playerLeft && itemRight >= playerRight;
-    const hitTop = itemTop <= playerBottom && itemTop >= playerTop;
-    const hitBottom = itemBottom <= playerTop && itemBottom >= playerBottom;
+    const collideTop = this.y < item.y + item.size;
 
-    return (hitLeft || hitRight) && (hitTop || hitBottom);
+    const collideBottom = this.y + this.size > item.y;
+
+    return collideLeft && collideRight && collideTop && collideBottom;
   }
 }
