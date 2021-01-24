@@ -93,7 +93,6 @@ class Enemy {
     y.position
 	  size
     speed
-    direction
     image
 }
 ```
@@ -101,7 +100,7 @@ class Enemy {
 ###### Methods
 
 - draw
-- move
+- update
 
 ##### 7. Goods class
 
@@ -113,7 +112,6 @@ class Goods {
     y.position
     size
     speed
-    direction
     image
 }
 ```
@@ -121,7 +119,7 @@ class Goods {
 ###### Methods
 
 - draw
-- move
+- update
 
 ### States and States Transitions
 

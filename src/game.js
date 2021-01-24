@@ -5,7 +5,7 @@ class Game {
     this.canvas = null;
     this.ctx = null;
     this.player = null;
-    this.enemy = [];
+    this.enemies = [];
     this.goods = [];
     this.gameOver = false;
     this.gameScreen = null;
@@ -13,34 +13,48 @@ class Game {
   }
 
   start() {
-    //Create ctx, player and start loop
-    this.canvas = this.gameScreen.querySelector("canvas");
+    this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
 
-    this.points = this.gameScreen.querySelector(".points .value");
-    this.borderControl = this.gameScreen.querySelector(".lives .value");
+    // this.points = this.gameScreen.querySelector(".points .value");
+    // this.borderControl = this.gameScreen.querySelector(".lives .value");
 
     this.player = new Player(this.canvas, 3);
+    this.enemy = new Enemy(this.canvas, 35, 3);
 
-    // function handleKeyLeft(event) {
-    //   if (event.key === "ArrowLeft") {
-    //     this.player.setDirection("left");
-    //   } else if (event.key === "ArrowRight") {
-    //     this.player.setDirection("right");
-    //   }
-    // }
+    function handleKeyDown(event) {
+      if (event.key === "ArrowLeft") {
+        this.player.setDirection("left");
+      } else if (event.key === "ArrowRight") {
+        this.player.setDirection("right");
+      }
+    }
 
-    // const boundHandleKeyLeft = handleKeyLeft.bind(this);
-    // document.body.addEventListener("keyleft", boundHandleKeyLeft);
+    function handleKeyUp(event) {
+      this.player.setDirection();
+    }
+
+    const boundHandleKeyUp = handleKeyUp.bind(this);
+    document.body.addEventListener("keyup", boundHandleKeyUp);
+
+    const boundHandleKeyDown = handleKeyDown.bind(this);
+    document.body.addEventListener("keydown", boundHandleKeyDown);
 
     this.startLoop();
   }
 
   startLoop() {
     const loop = function () {
-      console.log("looping");
+      this.handleCollisionEnemy();
 
-      this.player.draw();
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      this.drawAll();
+
+      this.updateAll();
+
+      window.requestAnimationFrame(loop);
+      console.log("looping");
     }.bind(this);
 
     // if (!this.gameOver) {
@@ -50,9 +64,21 @@ class Game {
     window.requestAnimationFrame(loop);
   }
 
-  handleCollisionsEnemy() {}
+  drawAll() {
+    this.player.draw();
+    this.enemy.draw();
+  }
 
-  handleCollisionsGoods() {}
+  updateAll() {
+    this.player.update();
+    this.enemy.update();
+  }
+
+  handleCollisionEnemy() {
+    this.player.didCollide(this.enemy);
+  }
+
+  handleCollisionGoods() {}
 
   gameOver() {}
 
