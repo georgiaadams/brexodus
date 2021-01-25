@@ -19,12 +19,11 @@ body {
   justify-content: center;
   height: 100vh;
   padding: 70px;
-  background-image: linear-gradient(to bottom right, #3e2b61, #8a78a9);
+  background-color: #39b6ff;
 }
 
 canvas {
-  background-color: white;
-  border: black solid 2px;
+  background-color: #39b6ff;
 }
 
 html,

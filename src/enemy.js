@@ -4,7 +4,7 @@ class Enemy {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = canvas.height;
-    this.size = 140;
+    this.size = 120;
     this.speed = speed;
   }
 
@@ -16,8 +16,8 @@ class Enemy {
     this.y -= this.speed;
   }
 
-  isInsideScreen() {
-    return this.y + this.size / 2 > 0;
+  insideScreen() {
+    return this.y + this.size;
   }
 }
 

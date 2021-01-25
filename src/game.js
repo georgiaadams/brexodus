@@ -11,6 +11,8 @@ class Game {
     this.gameScreen = null;
     this.gamePoints = 0;
     this.buildGameOverScreen = buildGameOverScreen;
+    this.background = null;
+    this.lives = 3;
   }
 
   start() {
@@ -20,7 +22,8 @@ class Game {
     this.points = this.gameScreen.querySelector(".points .value");
     this.borderControl = this.gameScreen.querySelector(".lives .value");
 
-    this.player = new Player(this.canvas, 3);
+    this.background = new Background(this.canvas);
+    this.player = new Player(this.canvas, 30);
 
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {
@@ -46,12 +49,12 @@ class Game {
   startLoop() {
     const loop = function () {
       if (Math.random() > 0.99) {
-        let randomX = (this.canvas.width - 50) * Math.random();
+        let randomX = (this.canvas.width - 120) * Math.random();
         let newEnemy = new Macron(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
       if (Math.random() > 0.98) {
-        let randomX = (this.canvas.width - 50) * Math.random();
+        let randomX = (this.canvas.width - 120) * Math.random();
         let newEnemy = new Merkel(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
@@ -59,8 +62,8 @@ class Game {
       this.handleCollisionEnemy();
 
       if (Math.random() > 0.98) {
-        let randomGX = (this.canvas.width - 50) * Math.random();
-        let newGood = new Goods(this.canvas, randomGX, 6);
+        let randomGX = (this.canvas.width - 70) * Math.random();
+        let newGood = new Goods(this.canvas, randomGX, 4);
         this.goods.push(newGood);
       }
 
@@ -83,6 +86,7 @@ class Game {
   }
 
   drawAll() {
+    this.background.draw();
     this.player.draw();
     this.enemies.forEach(function (enemy) {
       enemy.draw();
@@ -93,16 +97,17 @@ class Game {
   }
 
   updateAll() {
+    this.background.update();
     this.player.update();
 
     this.enemies = this.enemies.filter(function (enemy) {
       enemy.update();
-      return enemy.isInsideScreen();
+      return enemy.insideScreen();
     });
 
     this.goods = this.goods.filter(function (good) {
       good.update();
-      return good.isInsideScreen();
+      return good.insideScreen();
     });
   }
 

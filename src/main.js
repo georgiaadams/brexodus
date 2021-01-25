@@ -5,6 +5,7 @@ let splashScreen;
 let gameScreen;
 let gameOverScreen;
 let winScreen;
+let gameAudio = new Audio("./audios/game.mp3");
 
 function buildDom(htmlString) {
   const div = document.createElement("div");
@@ -40,6 +41,17 @@ function removeSplashScreen() {
 }
 
 function createGameScreen() {
+  gameAudio.play();
+
+  gameAudio.addEventListener(
+    "ended",
+    function () {
+      his.currentTime = 0;
+      this.play();
+    },
+    false
+  );
+
   gameScreen = buildDom(`
     <main class="game-screen">
       <header>
@@ -70,6 +82,8 @@ function removeGameScreen() {
 }
 
 function createGameOverScreen() {
+  gameAudio.pause();
+  gameAudio.currentTime = 0;
   gameOverScreen = buildDom(`
      <main>
      <h2>You've been DEPORTED</h2>
@@ -92,6 +106,8 @@ function removeGameOverScreen() {
 }
 
 function createWinScreen() {
+  gameAudio.pause();
+  gameAudio.currentTime = 0;
   winScreen = buildDom(`
      <main>
      <h2>Congrats! You made it into the EU</h2>
