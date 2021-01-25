@@ -22,3 +22,11 @@ class Goods {
     return this.y + this.size / 2 > 0;
   }
 }
+
+class Money extends Goods {
+  constructor(canvas, x, speed) {
+    super(canvas, x, speed);
+    this.image = new Image();
+    this.image.src = "../img/goods-img.png";
+  }
+}

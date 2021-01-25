@@ -9,7 +9,7 @@ class Player {
     this.direction = 0;
     this.lives = lives;
     this.image = new Image();
-    this.image.src = "../img/boat-left.png";
+    this.image.src = "../img/player-left.png";
     this.speed = 8;
     this.gamePoints = 0;
   }
@@ -26,10 +26,10 @@ class Player {
   setDirection(direction) {
     if (direction === "left") {
       this.direction = -1;
-      this.image.src = "../img/boat-left.png";
+      this.image.src = "../img/player-left.png";
     } else if (direction === "right") {
       this.direction = 1;
-      this.image.src = "../img/boat-right.png";
+      this.image.src = "../img/player-right.png";
     } else {
       this.direction = 0;
     }

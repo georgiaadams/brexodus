@@ -23,7 +23,10 @@ class Game {
     this.borderControl = this.gameScreen.querySelector(".lives .value");
 
     this.background = new Background(this.canvas);
-    this.player = new Player(this.canvas, 30);
+    this.player = new Player(this.canvas, 3);
+
+    this.macronAudio = new Audio("./audios/macron.mov");
+    this.goodsAudio = new Audio("./audios/goods.mp3");
 
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {
@@ -48,12 +51,12 @@ class Game {
 
   startLoop() {
     const loop = function () {
-      if (Math.random() > 0.99) {
+      if (Math.random() > 0.982) {
         let randomX = (this.canvas.width - 120) * Math.random();
         let newEnemy = new Macron(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
-      if (Math.random() > 0.98) {
+      if (Math.random() > 0.982) {
         let randomX = (this.canvas.width - 120) * Math.random();
         let newEnemy = new Merkel(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
@@ -64,6 +67,11 @@ class Game {
       if (Math.random() > 0.98) {
         let randomGX = (this.canvas.width - 70) * Math.random();
         let newGood = new Goods(this.canvas, randomGX, 4);
+        this.goods.push(newGood);
+      }
+      if (Math.random() > 0.98) {
+        let randomGX = (this.canvas.width - 70) * Math.random();
+        let newGood = new Money(this.canvas, randomGX, 4);
         this.goods.push(newGood);
       }
 
@@ -119,6 +127,10 @@ class Game {
       const colliding = this.player.didCollide(enemy);
 
       if (colliding) {
+        this.macronAudio.pause();
+        this.macronAudio.currentTime = 0;
+        this.macronAudio.play();
+
         this.player.removeLife();
       }
 
@@ -134,7 +146,10 @@ class Game {
       const goodsCollide = this.player.didCollide(good);
 
       if (goodsCollide) {
-        this.player.gamePoints += 10;
+        this.goodsAudio.pause();
+        this.goodsAudio.currentTime = 0;
+        this.goodsAudio.play();
+        this.player.gamePoints += 5;
       }
 
       return !goodsCollide;

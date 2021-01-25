@@ -6,7 +6,7 @@
 
 ### MVP (DOM - CANVAS)
 
-The player can move from left to right on the screen with the keyboard. They have to collect goods to gain points whilst avoiding our politicians. Each good is worth 10 points and the game is won when you reach 100 points. The game is over when the player collides 3 times with a politician.
+The player can move from left to right on the screen with the keyboard. They have to collect goods to gain points whilst avoiding our politicians. Each good is worth 5 points and the game is won when you reach 100 points. The game is over when the player collides 3 times with a politician.
 
 ### Data Structure
 

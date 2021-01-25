@@ -46,7 +46,7 @@ function createGameScreen() {
   gameAudio.addEventListener(
     "ended",
     function () {
-      his.currentTime = 0;
+      this.currentTime = 0;
       this.play();
     },
     false

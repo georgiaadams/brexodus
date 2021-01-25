@@ -4,7 +4,7 @@ class Enemy {
     this.ctx = this.canvas.getContext("2d");
     this.x = x;
     this.y = canvas.height;
-    this.size = 120;
+    this.size = 100;
     this.speed = speed;
   }
 
