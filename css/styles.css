@@ -125,3 +125,18 @@ p {
   background-size: contain;
   width: 600px;
 }
+
+.win-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.win-text {
+  font-family: fantasy;
+  font-size: 22px;
+  line-height: 2;
+  text-align: center;
+  font-weight: bold;
+  width: 430px;
+}

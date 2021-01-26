@@ -24,8 +24,8 @@ class Game {
     this.background = new Background(this.canvas);
     this.player = new Player(this.canvas, 3);
 
-    this.macronAudio = new Audio("./audios/macron.mov");
-    this.goodsAudio = new Audio("./audios/goods.mp3");
+    this.macronAudio = new Audio("audios/macron.mov");
+    this.goodsAudio = new Audio("audios/goods.mp3");
 
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {

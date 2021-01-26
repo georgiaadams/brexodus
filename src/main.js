@@ -5,7 +5,7 @@ let splashScreen;
 let gameScreen;
 let gameOverScreen;
 let winScreen;
-let gameAudio = new Audio("./audios/game.mp3");
+let gameAudio = new Audio("/audios/game.mp3");
 
 function buildDom(htmlString) {
   const div = document.createElement("div");
@@ -108,9 +108,9 @@ function createWinScreen() {
   gameAudio.pause();
   gameAudio.currentTime = 0;
   winScreen = buildDom(`
-     <main>
+     <main class="win-screen">
      <img class="win-img" src="../img/win-img.png" alt="win-img" />
-    <p>Put winners text here</p>
+    <p class="win-text">CONGRATULATIONS! FELICITACIONES! You've successfully made it into the EU!  GO YOU :)</p>
     <button class="restart-btn">Restart</button>
      </main>
     `);

@@ -27,10 +27,10 @@ class Player {
   setDirection(direction) {
     if (direction === "left") {
       this.direction = -1;
-      this.image.src = "../img/player-left.png";
+      this.image.src = "img/player-left.png";
     } else if (direction === "right") {
       this.direction = 1;
-      this.image.src = "../img/player-right.png";
+      this.image.src = "img/player-right.png";
     } else {
       this.direction = 0;
     }
