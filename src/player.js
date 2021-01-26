@@ -1,3 +1,4 @@
+"use strict";
 class Player {
   constructor(canvas, lives) {
     this.canvas = canvas;
@@ -9,7 +10,7 @@ class Player {
     this.direction = 0;
     this.lives = lives;
     this.image = new Image();
-    this.image.src = "../img/player-left.png";
+    this.image.src = "img/player-left.png";
     this.speed = 8;
     this.gamePoints = 0;
   }

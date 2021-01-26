@@ -1,3 +1,4 @@
+"use strict";
 class Goods {
   constructor(canvas, x, speed) {
     this.canvas = canvas;
@@ -7,7 +8,7 @@ class Goods {
     this.size = 70;
     this.speed = speed;
     this.image = new Image();
-    this.image.src = "../img/passport.png";
+    this.image.src = "img/passport.png";
   }
   draw() {
     this.ctx.fillStyle = "#F38B1D";
@@ -27,6 +28,6 @@ class Money extends Goods {
   constructor(canvas, x, speed) {
     super(canvas, x, speed);
     this.image = new Image();
-    this.image.src = "../img/goods-img.png";
+    this.image.src = "img/goods-img.png";
   }
 }

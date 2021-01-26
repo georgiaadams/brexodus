@@ -1,3 +1,4 @@
+"use strict";
 class Enemy {
   constructor(canvas, x, speed) {
     this.canvas = canvas;
@@ -25,7 +26,7 @@ class Macron extends Enemy {
   constructor(canvas, x, speed) {
     super(canvas, x, speed);
     this.image = new Image();
-    this.image.src = "../img/macron-enemy.png";
+    this.image.src = "img/macron-enemy.png";
   }
 }
 
@@ -33,6 +34,6 @@ class Merkel extends Enemy {
   constructor(canvas, x, speed) {
     super(canvas, x, speed);
     this.image = new Image();
-    this.image.src = "../img/merkel-enemy.png";
+    this.image.src = "img/merkel-enemy.png";
   }
 }

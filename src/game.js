@@ -12,7 +12,6 @@ class Game {
     this.gamePoints = 0;
     this.buildGameOverScreen = buildGameOverScreen;
     this.background = null;
-    this.lives = 3;
   }
 
   start() {

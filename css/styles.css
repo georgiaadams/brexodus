@@ -20,6 +20,8 @@ body {
   height: 100vh;
   padding: 70px;
   background-color: #39b6ff;
+  /* background-image: url("../img/cloud-game.jpeg");
+  background-size: cover; */
 }
 
 canvas {
@@ -88,3 +90,19 @@ header {
 .game.points {
   flex: 1;
 }
+
+.game-over {
+  color: black;
+  font-family: fantasy;
+  font-size: 150px;
+  width: 200px;
+  line-height: 1;
+}
+
+
+/*height: 50px;
+    font-weight: bold;
+    background-color: cadetblue;
+    font-family: fantasy;
+    font-size: 20px 
+    width: 150px;*

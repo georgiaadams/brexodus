@@ -86,10 +86,10 @@ function createGameOverScreen() {
   gameAudio.currentTime = 0;
   gameOverScreen = buildDom(`
      <main>
-     <h2>You've been DEPORTED</h2>
+     <h2 class="game-over">GAME OVER</h2>
      <img class="lose-img" src="" alt="" />
     <p>Put losers text here</p>
-    <button>Try Again</button>
+    <button>TRY AGAIN</button>
      </main>
     `);
 
