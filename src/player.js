@@ -32,7 +32,7 @@ class Player {
       this.direction = 1;
       this.image.src = "img/player-right.png";
     } else {
-      this.direction = 0;
+      // this.direction = 0;
     }
   }
 

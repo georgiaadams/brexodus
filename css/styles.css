@@ -68,8 +68,9 @@ h1 {
 h3 {
   color: black;
   font-family: fantasy;
-  width: 45%;
+  width: 300px;
   text-align: center;
+  font-size: 30px;
 }
 
 header {
@@ -119,11 +120,6 @@ p {
   width: 750px;
   text-align: center;
   padding-bottom: 50px;
-}
-
-.win-img {
-  background-size: contain;
-  width: 600px;
 }
 
 .win-screen {

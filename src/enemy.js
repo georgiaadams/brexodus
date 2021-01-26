@@ -1,4 +1,10 @@
 "use strict";
+
+const macronAudio = new Audio("audios/macron.mov");
+const goodsAudio = new Audio("audios/goods.mp3");
+const merkelAudio = new Audio("audios/merkel.mov");
+const borisAudio = new Audio("audios/boris.mov");
+
 class Enemy {
   constructor(canvas, x, speed) {
     this.canvas = canvas;
@@ -7,6 +13,7 @@ class Enemy {
     this.y = canvas.height;
     this.size = 100;
     this.speed = speed;
+    this.audio = goodsAudio;
   }
 
   draw() {
@@ -20,6 +27,12 @@ class Enemy {
   insideScreen() {
     return this.y + this.size;
   }
+
+  play() {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.audio.play();
+  }
 }
 
 class Macron extends Enemy {
@@ -27,6 +40,7 @@ class Macron extends Enemy {
     super(canvas, x, speed);
     this.image = new Image();
     this.image.src = "img/macron-enemy.png";
+    this.audio = macronAudio;
   }
 }
 
@@ -35,5 +49,16 @@ class Merkel extends Enemy {
     super(canvas, x, speed);
     this.image = new Image();
     this.image.src = "img/merkel-enemy.png";
+    this.audio = merkelAudio;
+  }
+}
+
+class Boris extends Enemy {
+  constructor(canvas, x, speed) {
+    super(canvas, x, speed);
+    this.size = 400;
+    this.image = new Image();
+    this.image.src = "img/boris-img.png";
+    this.audio = borisAudio;
   }
 }

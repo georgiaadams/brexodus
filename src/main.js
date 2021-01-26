@@ -5,8 +5,8 @@ let splashScreen;
 let gameScreen;
 let gameOverScreen;
 let winScreen;
-let gameAudio = new Audio("/audios/game.mp3");
-
+let gameAudio = new Audio("audios/game.mp3");
+let winAudio = new Audio("audios/win-audio.mov");
 function buildDom(htmlString) {
   const div = document.createElement("div");
   div.innerHTML = htmlString;
@@ -86,7 +86,7 @@ function createGameOverScreen() {
   gameAudio.currentTime = 0;
   gameOverScreen = buildDom(`
      <main class="gameover-screen">
-     <img class="lose-img" src="../img/gameover-img.png" alt="lose-img" />
+     <img class="lose-img" src="img/gameover-img.png" alt="lose-img" />
     <p>NO EUROPE FOR YOU! THE LAND OF TEA AND CRUMPETS AWAITS. BETTER LUCK NEXT TIME!</p>
     <button class="restart-btn">TRY AGAIN</button>
      </main>
@@ -107,9 +107,11 @@ function removeGameOverScreen() {
 function createWinScreen() {
   gameAudio.pause();
   gameAudio.currentTime = 0;
+
+  winAudio.play();
   winScreen = buildDom(`
      <main class="win-screen">
-     <img class="win-img" src="../img/win-img.png" alt="win-img" />
+     <img class="win-img" src="img/win-img.png" alt="win-img" />
     <p class="win-text">CONGRATULATIONS! FELICITACIONES! You've successfully made it into the EU!  GO YOU :)</p>
     <button class="restart-btn">Restart</button>
      </main>

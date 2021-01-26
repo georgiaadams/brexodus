@@ -12,6 +12,8 @@ class Game {
     this.gamePoints = 0;
     this.buildGameOverScreen = buildGameOverScreen;
     this.background = null;
+    this.level1 = true;
+    this.boris = null;
   }
 
   start() {
@@ -24,7 +26,6 @@ class Game {
     this.background = new Background(this.canvas);
     this.player = new Player(this.canvas, 3);
 
-    this.macronAudio = new Audio("audios/macron.mov");
     this.goodsAudio = new Audio("audios/goods.mp3");
 
     function handleKeyDown(event) {
@@ -61,6 +62,12 @@ class Game {
         this.enemies.push(newEnemy);
       }
 
+      if (this.player.gamePoints === 20 && this.level1) {
+        this.level1 = false;
+        let randomX = (this.canvas.width - 120) * Math.random();
+        this.boris = new Boris(this.canvas, randomX, 4);
+      }
+
       this.handleCollisionEnemy();
 
       if (Math.random() > 0.98) {
@@ -95,6 +102,10 @@ class Game {
   drawAll() {
     this.background.draw();
     this.player.draw();
+    if (this.boris) {
+      this.boris.draw();
+    }
+
     this.enemies.forEach(function (enemy) {
       enemy.draw();
     });
@@ -106,6 +117,9 @@ class Game {
   updateAll() {
     this.background.update();
     this.player.update();
+    if (this.boris) {
+      this.boris.update();
+    }
 
     this.enemies = this.enemies.filter(function (enemy) {
       enemy.update();
@@ -122,14 +136,18 @@ class Game {
     if (this.player.lives === 0) {
       this.gameOver(false);
     }
+
+    if (this.boris && this.player.didCollide(this.boris)) {
+      this.boris = null;
+      this.player.gamePoints -= 15;
+      this.player.lives += 2;
+    }
+
     this.enemies = this.enemies.filter((enemy) => {
       const colliding = this.player.didCollide(enemy);
 
       if (colliding) {
-        this.macronAudio.pause();
-        this.macronAudio.currentTime = 0;
-        this.macronAudio.play();
-
+        enemy.play();
         this.player.removeLife();
       }
 
@@ -145,10 +163,12 @@ class Game {
       const goodsCollide = this.player.didCollide(good);
 
       if (goodsCollide) {
+        this.player.gamePoints += 5;
         this.goodsAudio.pause();
         this.goodsAudio.currentTime = 0;
-        this.goodsAudio.play();
-        this.player.gamePoints += 5;
+        if (this.player.gamePoints < 100) {
+          this.goodsAudio.play();
+        }
       }
 
       return !goodsCollide;
