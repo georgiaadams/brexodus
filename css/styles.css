@@ -91,6 +91,7 @@ header {
   flex: 1;
 }
 
+<<<<<<< HEAD
 .game-over {
   color: black;
   font-family: fantasy;
@@ -106,3 +107,39 @@ header {
     font-family: fantasy;
     font-size: 20px 
     width: 150px;*
+=======
+.gameover-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restart-btn {
+  width: 150px;
+  height: 50px;
+  border: white;
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: 22px;
+  background-color: cadetblue;
+}
+
+.lose-img {
+  background-size: contain;
+  width: 550px;
+}
+
+p {
+  font-family: fantasy;
+  font-size: 22px;
+  line-height: 2;
+  width: 750px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.win-img {
+  background-size: contain;
+  width: 600px;
+}
+>>>>>>> master

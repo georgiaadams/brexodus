@@ -85,11 +85,18 @@ function createGameOverScreen() {
   gameAudio.pause();
   gameAudio.currentTime = 0;
   gameOverScreen = buildDom(`
+<<<<<<< HEAD
      <main>
      <h2 class="game-over">GAME OVER</h2>
      <img class="lose-img" src="" alt="" />
     <p>Put losers text here</p>
     <button>TRY AGAIN</button>
+=======
+     <main class="gameover-screen">
+     <img class="lose-img" src="../img/gameover-img.png" alt="lose-img" />
+    <p>NO EUROPE FOR YOU! THE LAND OF TEA AND CRUMPETS AWAITS. BETTER LUCK NEXT TIME!</p>
+    <button class="restart-btn">TRY AGAIN</button>
+>>>>>>> master
      </main>
     `);
 
@@ -110,10 +117,9 @@ function createWinScreen() {
   gameAudio.currentTime = 0;
   winScreen = buildDom(`
      <main>
-     <h2>Congrats! You made it into the EU</h2>
-     <img class="win-img" src="" alt="" />
+     <img class="win-img" src="../img/win-img.png" alt="win-img" />
     <p>Put winners text here</p>
-    <button>Restart</button>
+    <button class="restart-btn">Restart</button>
      </main>
     `);
 
