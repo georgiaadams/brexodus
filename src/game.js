@@ -9,11 +9,12 @@ class Game {
     this.goods = [];
     this.gameIsOver = false;
     this.gameScreen = null;
-    this.gamePoints = 0;
+    // this.gamePoints = 0;
     this.buildGameOverScreen = buildGameOverScreen;
     this.background = null;
     this.level1 = true;
     this.boris = null;
+    this.level2 = true;
   }
 
   start() {
@@ -51,12 +52,12 @@ class Game {
 
   startLoop() {
     const loop = function () {
-      if (Math.random() > 0.988) {
+      if (Math.random() > 0.984) {
         let randomX = (this.canvas.width - 80) * Math.random();
         let newEnemy = new Macron(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
-      if (Math.random() > 0.988) {
+      if (Math.random() > 0.984) {
         let randomX = (this.canvas.width - 80) * Math.random();
         let newEnemy = new Merkel(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
@@ -65,17 +66,23 @@ class Game {
       if (this.player.gamePoints === 40 && this.level1) {
         this.level1 = false;
         let randomX = (this.canvas.width - 400) * Math.random();
-        this.boris = new Boris(this.canvas, randomX, 4);
+        this.boris = new Boris(this.canvas, randomX, 5);
+      }
+
+      if (this.player.gamePoints === 80 && this.level2) {
+        this.level2 = false;
+        let randomX = (this.canvas.width - 400) * Math.random();
+        this.boris = new Boris(this.canvas, randomX, 5);
       }
 
       this.handleCollisionEnemy();
 
-      if (Math.random() > 0.984) {
+      if (Math.random() > 0.988) {
         let randomGX = (this.canvas.width - 40) * Math.random();
         let newGood = new Goods(this.canvas, randomGX, 4);
         this.goods.push(newGood);
       }
-      if (Math.random() > 0.984) {
+      if (Math.random() > 0.988) {
         let randomGX = (this.canvas.width - 40) * Math.random();
         let newGood = new Money(this.canvas, randomGX, 4);
         this.goods.push(newGood);
@@ -120,6 +127,7 @@ class Game {
     if (this.boris) {
       this.boris.update();
       const borisInScreen = this.boris.insideScreen();
+      console.log(borisInScreen);
       if (!borisInScreen) {
         this.boris = null;
       }

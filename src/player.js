@@ -11,7 +11,7 @@ class Player {
     this.lives = lives;
     this.image = new Image();
     this.image.src = "img/player-left.png";
-    this.speed = 8;
+    this.speed = 7;
     this.gamePoints = 0;
   }
 

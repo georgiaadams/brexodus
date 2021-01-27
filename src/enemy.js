@@ -3,7 +3,7 @@
 const macronAudio = new Audio("audios/macron.mov");
 const goodsAudio = new Audio("audios/goods-audio.mov");
 const merkelAudio = new Audio("audios/merkel.mov");
-const borisAudio = new Audio("audios/boris.mov");
+const borisAudio = new Audio("audios/borisaudio.mov");
 
 class Enemy {
   constructor(canvas, x, speed) {
@@ -29,7 +29,7 @@ class Enemy {
   }
 
   insideScreen() {
-    return this.y + this.size;
+    return this.y + this.size > 0;
   }
 
   play() {

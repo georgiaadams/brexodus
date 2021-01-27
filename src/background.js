@@ -7,7 +7,7 @@ class Background {
     this.y = 0;
     this.image = new Image();
     this.image.src = "img/background.png";
-    this.speed = 2;
+    this.speed = 0.5;
   }
   draw() {
     this.ctx.drawImage(this.image, 0, this.y);

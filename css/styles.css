@@ -20,8 +20,8 @@ body {
   height: 100vh;
   padding: 70px;
   background-color: #39b6ff;
-  /* background-image: url("../img/cloud-game.jpeg");
-  background-size: cover; */
+  /*background-image: url("../img/cloud-game.jpeg");
+  background-size: cover;*/
 }
 
 canvas {
@@ -44,17 +44,18 @@ h1 {
   color: black;
   font-family: fantasy;
   text-align: center;
+  padding-top: 70px;
 }
 
 .start-btn {
-  background-color: white;
+  background-color: azure;
   color: black;
-  width: 100px;
-  height: 40px;
+  width: 120px;
+  height: 50px;
   font-size: 25px;
   font-weight: bold;
   font-family: fantasy;
-  border: black double 2px;
+  border: black solid 3px;
 }
 
 .splash-screen {
@@ -64,12 +65,14 @@ h1 {
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .rules {
   width: 550px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 h3 {
