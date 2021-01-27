@@ -7,7 +7,7 @@ let gameOverScreen;
 let winScreen;
 let gameAudio = new Audio("audios/game.mp3");
 let winAudio = new Audio("audios/win-audio.mov");
-let gameOverAudio = new Audio("audios/gameOver.mov");
+let gameOverAudio = new Audio("audios/gameover.mov");
 function buildDom(htmlString) {
   const div = document.createElement("div");
   div.innerHTML = htmlString;

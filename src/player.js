@@ -5,13 +5,13 @@ class Player {
     this.ctx = this.canvas.getContext("2d");
 
     this.x = canvas.width / 2;
-    this.y = 50;
+    this.y = 60;
     this.size = 70;
     this.direction = 0;
     this.lives = lives;
     this.image = new Image();
     this.image.src = "img/player-left.png";
-    this.speed = 7;
+    this.speed = 6;
     this.gamePoints = 0;
   }
 
