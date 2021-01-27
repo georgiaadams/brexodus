@@ -51,32 +51,32 @@ class Game {
 
   startLoop() {
     const loop = function () {
-      if (Math.random() > 0.982) {
-        let randomX = (this.canvas.width - 120) * Math.random();
+      if (Math.random() > 0.988) {
+        let randomX = (this.canvas.width - 80) * Math.random();
         let newEnemy = new Macron(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
-      if (Math.random() > 0.982) {
-        let randomX = (this.canvas.width - 120) * Math.random();
+      if (Math.random() > 0.988) {
+        let randomX = (this.canvas.width - 80) * Math.random();
         let newEnemy = new Merkel(this.canvas, randomX, 4);
         this.enemies.push(newEnemy);
       }
 
       if (this.player.gamePoints === 40 && this.level1) {
         this.level1 = false;
-        let randomX = (this.canvas.width - 120) * Math.random();
+        let randomX = (this.canvas.width - 400) * Math.random();
         this.boris = new Boris(this.canvas, randomX, 4);
       }
 
       this.handleCollisionEnemy();
 
-      if (Math.random() > 0.98) {
-        let randomGX = (this.canvas.width - 70) * Math.random();
+      if (Math.random() > 0.984) {
+        let randomGX = (this.canvas.width - 40) * Math.random();
         let newGood = new Goods(this.canvas, randomGX, 4);
         this.goods.push(newGood);
       }
-      if (Math.random() > 0.98) {
-        let randomGX = (this.canvas.width - 70) * Math.random();
+      if (Math.random() > 0.984) {
+        let randomGX = (this.canvas.width - 40) * Math.random();
         let newGood = new Money(this.canvas, randomGX, 4);
         this.goods.push(newGood);
       }
@@ -119,15 +119,19 @@ class Game {
     this.player.update();
     if (this.boris) {
       this.boris.update();
+      const borisInScreen = this.boris.insideScreen();
+      if (!borisInScreen) {
+        this.boris = null;
+      }
     }
 
-    this.enemies = this.enemies.filter(function (enemy) {
-      enemy.update();
+    this.enemies = this.enemies.filter((enemy) => {
+      enemy.update(this.boris);
       return enemy.insideScreen();
     });
 
-    this.goods = this.goods.filter(function (good) {
-      good.update();
+    this.goods = this.goods.filter((good) => {
+      good.update(this.boris);
       return good.insideScreen();
     });
   }

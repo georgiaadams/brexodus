@@ -6,7 +6,7 @@ class Player {
 
     this.x = canvas.width / 2;
     this.y = 50;
-    this.size = 80;
+    this.size = 70;
     this.direction = 0;
     this.lives = lives;
     this.image = new Image();

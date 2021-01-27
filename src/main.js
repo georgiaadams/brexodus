@@ -18,17 +18,9 @@ function createSplashScreen() {
   splashScreen = buildDom(`
     <main class="splash-screen">
       <h1>BREXODUS</h1>
+      <img class="rules" src="img/rules.png" alt="rules"/>
       <button class="start-btn">START</button>
-      <div>
-      <h3>Rules of the Game</h3>
-      <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      </ul>
-      </div>
+     
     </main>`);
 
   document.body.appendChild(splashScreen);
@@ -57,11 +49,11 @@ function createGameScreen() {
     <main class="game-screen">
       <header>
         <div class="points">
-        <span>Points:</span>
+        <span>POINTS:</span>
         <span class="value"></span>
         </div>
         <div class="lives">
-        <span>Border Control:</span>
+        <span>LIVES:</span>
         <span class="value"></span>
         </div>
       </header>
