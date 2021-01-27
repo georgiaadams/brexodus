@@ -7,6 +7,7 @@ let gameOverScreen;
 let winScreen;
 let gameAudio = new Audio("audios/game.mp3");
 let winAudio = new Audio("audios/win-audio.mov");
+let gameOverAudio = new Audio("audios/gameover.mov");
 function buildDom(htmlString) {
   const div = document.createElement("div");
   div.innerHTML = htmlString;
@@ -84,6 +85,8 @@ function removeGameScreen() {
 function createGameOverScreen() {
   gameAudio.pause();
   gameAudio.currentTime = 0;
+  gameOverAudio.play();
+
   gameOverScreen = buildDom(`
      <main class="gameover-screen">
      <img class="lose-img" src="img/gameover-img.png" alt="lose-img" />

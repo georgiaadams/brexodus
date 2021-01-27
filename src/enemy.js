@@ -1,7 +1,7 @@
 "use strict";
 
 const macronAudio = new Audio("audios/macron.mov");
-const goodsAudio = new Audio("audios/goods.mp3");
+const goodsAudio = new Audio("audios/goods-audio.mov");
 const merkelAudio = new Audio("audios/merkel.mov");
 const borisAudio = new Audio("audios/boris.mov");
 

@@ -5,7 +5,7 @@ class Player {
     this.ctx = this.canvas.getContext("2d");
 
     this.x = canvas.width / 2;
-    this.y = 40;
+    this.y = 50;
     this.size = 80;
     this.direction = 0;
     this.lives = lives;

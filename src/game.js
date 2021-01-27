@@ -26,7 +26,7 @@ class Game {
     this.background = new Background(this.canvas);
     this.player = new Player(this.canvas, 3);
 
-    this.goodsAudio = new Audio("audios/goods.mp3");
+    this.goodsAudio = new Audio("audios/goods-audio.mov");
 
     function handleKeyDown(event) {
       if (event.key === "ArrowLeft") {
@@ -62,7 +62,7 @@ class Game {
         this.enemies.push(newEnemy);
       }
 
-      if (this.player.gamePoints === 20 && this.level1) {
+      if (this.player.gamePoints === 40 && this.level1) {
         this.level1 = false;
         let randomX = (this.canvas.width - 120) * Math.random();
         this.boris = new Boris(this.canvas, randomX, 4);
@@ -138,6 +138,7 @@ class Game {
     }
 
     if (this.boris && this.player.didCollide(this.boris)) {
+      this.boris.play();
       this.boris = null;
       this.player.gamePoints -= 15;
       this.player.lives += 2;
@@ -147,8 +148,10 @@ class Game {
       const colliding = this.player.didCollide(enemy);
 
       if (colliding) {
-        enemy.play();
         this.player.removeLife();
+        if (this.player.lives !== 0) {
+          enemy.play();
+        }
       }
 
       return !colliding;
@@ -166,6 +169,7 @@ class Game {
         this.player.gamePoints += 5;
         this.goodsAudio.pause();
         this.goodsAudio.currentTime = 0;
+
         if (this.player.gamePoints < 100) {
           this.goodsAudio.play();
         }
