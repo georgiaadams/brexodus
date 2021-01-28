@@ -77,12 +77,12 @@ class Game {
 
       this.handleCollisionEnemy();
 
-      if (Math.random() > 0.988) {
+      if (Math.random() > 0.989) {
         let randomGX = (this.canvas.width - 40) * Math.random();
         let newGood = new Goods(this.canvas, randomGX, 4);
         this.goods.push(newGood);
       }
-      if (Math.random() > 0.988) {
+      if (Math.random() > 0.989) {
         let randomGX = (this.canvas.width - 40) * Math.random();
         let newGood = new Money(this.canvas, randomGX, 4);
         this.goods.push(newGood);

@@ -18,7 +18,7 @@ function createSplashScreen() {
   splashScreen = buildDom(`
     <main class="splash-screen">
       <h1>BREXODUS</h1>
-      <img class="rules" src="img/rules.png" alt="rules"/>
+      <img class="rules" src="img/rules1.png" alt="rules"/>
       <button class="start-btn">START</button>
      
     </main>`);

@@ -15,19 +15,6 @@ body {
 
 /*layout / components */
 
-.canvas-container {
-  justify-content: center;
-  height: 100vh;
-  padding: 70px;
-  background-color: #39b6ff;
-  /*background-image: url("../img/cloud-game.jpeg");
-  background-size: cover;*/
-}
-
-canvas {
-  background-color: #39b6ff;
-}
-
 html,
 body {
   height: 100vh;
@@ -38,10 +25,24 @@ p {
   margin: 0;
 }
 
+/* main components */
+.canvas-container {
+  justify-content: center;
+  height: 100vh;
+  padding: 110px;
+  background-color: #39b6ff;
+  /*background-image: url("../img/canvas-cont.png");
+  background-size: contain;*/
+}
+
+canvas {
+  background-color: #39b6ff;
+}
+
 h1 {
   font-size: 100px;
   margin: 0 auto;
-  color: black;
+  color: white;
   font-family: fantasy;
   text-align: center;
   padding-top: 70px;
@@ -59,7 +60,7 @@ h1 {
 }
 
 .splash-screen {
-  background-image: url("../img/splashscreen.png");
+  background-image: url("../img/start-screen.jpg");
   background-repeat: no-repeat;
   height: 100%;
   background-size: cover;
@@ -88,7 +89,7 @@ header {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  padding-top: 40px;
+  padding-top: 50px;
   font-family: fantasy;
   font-weight: bold;
   font-size: 20px;
